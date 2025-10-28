@@ -4,6 +4,7 @@ def get_student_info():
     grade = "A"    
     score = 95    
     return (name, age, grade, score)
+# print(get_student_info())
     
 # 튜플 언패킹
 student_name, student_age, student_grade, student_score = get_student_info()
