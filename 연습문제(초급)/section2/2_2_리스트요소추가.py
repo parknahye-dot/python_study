@@ -9,3 +9,12 @@ numbers.append(4)
 numbers.append(5)
 
 print(numbers)
+
+# 강사님 풀이
+
+numbers = []
+
+for i in range(1, 6):
+    numbers.append(i)
+    
+print(numbers)

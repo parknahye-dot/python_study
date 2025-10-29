@@ -1,3 +1,5 @@
+# 구구단 3단을 리스트로 만드세요.
+
 # squares = []
 
 # for i in range(10):
