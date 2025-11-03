@@ -10,6 +10,8 @@ student_names = ["김철수", "이영희", "박민수"]
 # 1. 각 학생의 총점과 평균
 print("=== 학생별 통계 ===")
 for name, scores in zip(student_names, students_scores):
+    print(name)
+    print(scores)
     total = sum(scores)
     avg = total / len(scores)
     print(f"{name}: 총점 {total}, 평균 {avg:.1f}")
@@ -17,6 +19,9 @@ for name, scores in zip(student_names, students_scores):
 # 2. 과목별 평균
 print("\n=== 과목별 평균 ===")
 for subject, *scores in zip(subjects, *students_scores): #언패킹 연산자 *
+# students_scores = [[85,90,88,92,87], [92,88,95,89,91], [78,85,82,80,84]]
+# *students_scores → [85,90,88,92,87], [92,88,95,89,91], [78,85,82,80,84]
+# zip(["수학","영어",...], [85,90,88,92,87], [92,88,95,89,91], [78,85,82,80,84])
     avg = sum(scores) / len(scores)
     print(f"{subject}: {avg:.1f}점")
     
@@ -24,13 +29,23 @@ for subject, *scores in zip(subjects, *students_scores): #언패킹 연산자 *
 print("\n=== 최고/최저 과목 ===")
 for name, scores in zip(student_names, students_scores):
     subject_scores = list(zip(subjects, scores))
+# subjects = ["수학", "영어", "과학", "사회", "국어"]
+# scores   = [85,     90,     88,     92,     87]
+# 예: [("수학", 85), ("영어", 90), ("과학", 88), ...]
     best = max(subject_scores, key=lambda x: x[1])
+# lambda x: x[1] → 튜플의 두 번째 요소(점수)를 기준으로 최대값 찾기
     worst = min(subject_scores, key=lambda x: x[1])
     print(f"{name}: 최고 {best[0]}({best[1]}점), 최저 {worst[0]}({worst[1]}점)")
 
 # 4. 전체 1등 과목
 print("\n=== 과목별 1등 ===")
 for subject, *scores in zip(subjects, *students_scores):
+    print(subjects)
+# ["수학", "영어", "과학", "사회", "국어"]
+    print(*students_scores)  
+# [85, 90, 88, 92, 87] [92, 88, 95, 89, 91] [78, 85, 82, 80, 84]
+    print(*scores)
+# 85 92 78
     max_score = max(scores)
     max_idx = scores.index(max_score) #주어진 값의 인덱스
     winner = student_names[max_idx]
